@@ -38,19 +38,45 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         titleSpacing: 1,
         backgroundColor: Colors.blueGrey,
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {});
+            },
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
+      backgroundColor: Colors.grey.shade200,
       body: ListView.builder(
         itemCount: Globals.globals.StudentData.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            onTap: () {},
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  Globals.globals.StudentData[index]['student_image']),
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListTile(
+              onTap: () {
+                Navigator.of(context).pushNamed(MyRoutes.AddDataPage);
+              },
+              tileColor: Colors.white,
+              leading: CircleAvatar(
+                  //   foregroundImage: NetworkImage(
+                  //       // Globals.globals.StudentData[index]['student_image']),
+                  ),
+              title: Text(
+                  'Name    : ${Globals.globals.StudentData[index]['student_name']}'),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                      'GRID       : ${Globals.globals.StudentData[index]['student_grid']}'),
+                  Text(
+                      'Standard  : ${Globals.globals.StudentData[index]['student_standard']}'),
+                ],
+              ),
             ),
-            title: Text(Globals.globals.StudentData[index]['student_name']),
-            subtitle:
-                Text(Globals.globals.StudentData[index]['student_standard']),
           );
         },
       ),
