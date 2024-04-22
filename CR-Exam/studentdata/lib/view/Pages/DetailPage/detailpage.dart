@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:studentdata/headers.dart';
+import 'package:studentdata/view/Pages/DetailPage/Component/detaildata.dart';
 
 import '../../../utils/Global/global_utils.dart';
 
@@ -51,99 +52,21 @@ class _DetailPageState extends State<DetailPage> {
                 : FileImage(Globals.globals.student_image!),
           ),
           SizedBox(height: size.height * 0.02),
-          Container(
-            margin: const EdgeInsets.all(16),
-            padding: const EdgeInsets.all(5),
-            width: size.width,
-            height: size.height * 0.05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Name',
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  data['student_name'],
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(16),
-            padding: const EdgeInsets.all(5),
-            width: size.width,
-            height: size.height * 0.05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'GRID',
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  data['student_grid'],
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(16),
-            padding: EdgeInsets.all(5),
-            width: size.width,
-            height: size.height * 0.05,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Standard',
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  data['student_standard'],
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    letterSpacing: 2,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          DetailData(
+              size: size,
+              data: data,
+              headername: 'Name',
+              headeransvar: 'student_name'),
+          DetailData(
+              size: size,
+              data: data,
+              headername: 'GRID',
+              headeransvar: 'student_grid'),
+          DetailData(
+              size: size,
+              data: data,
+              headername: 'Standard',
+              headeransvar: 'student_standard'),
         ],
       ),
     );
