@@ -29,20 +29,13 @@ class _AddDataPageState extends State<AddDataPage> {
     }
   }
 
-  int _selectedIndex = 0;
-  // File? selectedImage;
-  void _onItemTapped(int index) {
-    _selectedIndex = index;
-    setState(() {});
-  }
-
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Add Data Screen',
           style: TextStyle(color: Colors.white, fontSize: 24, letterSpacing: 2),
         ),
@@ -53,7 +46,7 @@ class _AddDataPageState extends State<AddDataPage> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(
+          icon: const Icon(
             CupertinoIcons.back,
             color: Colors.white,
           ),
@@ -184,11 +177,12 @@ class _AddDataPageState extends State<AddDataPage> {
                 ),
                 SizedBox(height: size.height * 0.03),
                 TextFormField(
-                  onSaved: (val) {
+                  keyboardType: TextInputType.name,
+                  textInputAction: TextInputAction.next,
+                  onChanged: (val) {
                     Globals.globals.student_name = val;
                   },
                   validator: (val) => val!.isEmpty ? 'Must Enter Name' : null,
-                  initialValue: Globals.globals.student_name,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.person_outline),
                     label: const Text('Student Name'),
@@ -199,11 +193,12 @@ class _AddDataPageState extends State<AddDataPage> {
                 ),
                 SizedBox(height: size.height * 0.01),
                 TextFormField(
-                  onSaved: (val) {
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
+                  onChanged: (val) {
                     Globals.globals.student_grid = val;
                   },
                   validator: (val) => val!.isEmpty ? 'Must Enter GRID' : null,
-                  initialValue: Globals.globals.student_grid,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.confirmation_num_outlined),
                     label: const Text('Student GRID'),
@@ -214,12 +209,13 @@ class _AddDataPageState extends State<AddDataPage> {
                 ),
                 SizedBox(height: size.height * 0.01),
                 TextFormField(
-                  onSaved: (val) {
+                  keyboardType: TextInputType.name,
+                  textInputAction: TextInputAction.done,
+                  onChanged: (val) {
                     Globals.globals.student_standard = val;
                   },
                   validator: (val) =>
                       val!.isEmpty ? 'Must Enter Standard' : null,
-                  initialValue: Globals.globals.student_standard,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.mode_standby_outlined),
                     label: const Text('Student Standard'),
@@ -244,9 +240,9 @@ class _AddDataPageState extends State<AddDataPage> {
                               'student_grid': Globals.globals.student_grid,
                               'student_standard':
                                   Globals.globals.student_standard,
-                              'imageController': TextEditingController(),
                               'gridController': TextEditingController(),
                               'stdController': TextEditingController(),
+                              'nameController': TextEditingController(),
                             },
                           );
                         }
